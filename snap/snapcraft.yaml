@@ -78,11 +78,11 @@ parts:
       - dpkg-dev
     stage-packages:
       - libxkbcommon0
-      - ttf-ubuntu-font-family
+      - fonts-ubuntu
       - dmz-cursor-theme
       - light-themes
       - adwaita-icon-theme
-      - gnome-themes-standard
+      - gnome-themes-extra
       - shared-mime-info
       - libqt5gui5
       - libgdk-pixbuf2.0-0
@@ -96,14 +96,14 @@ parts:
     plugin: nil
     override-build: | 
       env | grep SNAP
-      wget https://github.com/CoinBlack/blackcoin-more/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}-${SNAPCRAFT_ARCH_TRIPLET}.tar.gz
-      tar -xvf blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}-${SNAPCRAFT_ARCH_TRIPLET}.tar.gz
-      install -m 0755 -D -t $SNAPCRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmored
-      install -m 0755 -D -t $SNAPCRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-qt
-      install -m 0755 -D -t $SNAPCRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-cli
-      install -m 0755 -D -t $SNAPCRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-tx
-      wget https://raw.githubusercontent.com/CoinBlack/blackcoin-more/master/share/pixmaps/bitcoin128.png
-      install -m 0644 -D -t $SNAPCRAFT_PART_INSTALL/share/pixmaps bitcoin128.png
+      curl -LO https://github.com/CoinBlack/blackcoin-more/releases/download/v${CRAFT_PROJECT_VERSION}/blackcoin-more-${CRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET}.tar.gz
+      tar -xvf blackcoin-more-${CRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET}.tar.gz
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmored
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-qt
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-cli
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-tx
+      curl -LO https://raw.githubusercontent.com/CoinBlack/blackcoin-more/master/share/pixmaps/bitcoin128.png
+      install -m 0644 -D -t $CRAFT_PART_INSTALL/share/pixmaps bitcoin128.png
     build-packages:
       - curl
     after:
