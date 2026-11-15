@@ -95,14 +95,14 @@ parts:
   blackcoin-more:
     plugin: nil
     override-build: | 
-      env | grep SNAP
-      curl -LO https://github.com/CoinBlack/blackcoin-more/releases/download/v${CRAFT_PROJECT_VERSION}/blackcoin-more-${CRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET}.tar.gz
-      tar -xvf blackcoin-more-${CRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET}.tar.gz
-      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmored
-      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-qt
-      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-cli
-      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${CRAFT_PROJECT_VERSION}/bin/blackmore-tx
-      curl -LO https://raw.githubusercontent.com/CoinBlack/blackcoin-more/master/share/pixmaps/bitcoin128.png
+      env | grep -E 'SNAP|CRAFT'
+      curl -fLO https://github.com/CoinBlack/blackcoin-more/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET_BUILD_FOR}.tar.gz
+      tar -xvf blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}-${CRAFT_ARCH_TRIPLET_BUILD_FOR}.tar.gz
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmored
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-qt
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-cli
+      install -m 0755 -D -t $CRAFT_PART_INSTALL/bin blackcoin-more-${SNAPCRAFT_PROJECT_VERSION}/bin/blackmore-tx
+      curl -fLO https://raw.githubusercontent.com/CoinBlack/blackcoin-more/master/share/pixmaps/bitcoin128.png
       install -m 0644 -D -t $CRAFT_PART_INSTALL/share/pixmaps bitcoin128.png
     build-packages:
       - curl
